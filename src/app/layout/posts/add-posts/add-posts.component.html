@@ -1,0 +1,59 @@
+
+<br>
+<br>
+<div id="top" class="container">
+
+<form *ngIf="user" #form [formGroup]="postForm" (submit)="onSubmit()" class="text-center border border-light p-5">
+  <!-- Title -->
+  <br>
+  <h3>Add a new Post</h3>
+  <br>
+  <div class="md-form">
+    <input mdbInput type="text" id="defaultContactFormName" class="form-control " formControlName="titre"
+           placeholder="Title">
+    <div  class="alert alert-danger"
+      *ngIf="postForm.controls['titre'].invalid && (postForm.controls['titre'].dirty || postForm.controls['titre'].touched)">
+      <mdb-error
+        *ngIf="postForm.controls['titre'].errors.required">
+        Title is required.
+      </mdb-error>
+      <mdb-error *ngIf="postForm.controls['titre'].errors.minlength">
+        Title must be at least 4 characters long.
+      </mdb-error>
+    </div>
+  </div>
+  <!-- Email -->
+  <br>
+  <div class="md-form">
+    <input mdbInput type="text" id="defaultContactFormEmail" class="form-control " formControlName="date"
+           placeholder="Date">
+    <div  class="alert alert-danger"
+      *ngIf="postForm.controls['date'].invalid && (postForm.controls['date'].dirty || postForm.controls['date'].touched)">
+      <mdb-error
+        *ngIf="postForm.controls['date'].errors.required">
+        date is required.
+      </mdb-error>
+    </div>
+  </div>
+  <br>
+  <div class="md-form">
+    <textarea type="text" class="md-textarea form-control" formControlName="data" mdbInputDirective
+              placeholder="Body"></textarea>
+
+    <div  class="alert alert-danger"
+      *ngIf="postForm.controls['data'].invalid && (postForm.controls['data'].dirty || postForm.controls['data'].touched)">
+      <mdb-error
+        *ngIf="postForm.controls['data'].errors.required">
+        body is required.
+      </mdb-error>
+    </div>
+
+
+  </div>
+
+  <!-- Send button -->
+  <button [disabled]="postForm.invalid" class="btn  btn-outline-secondary "type="submit">Add</button>
+  <button class="btn  btn-outline-danger " (click)="change()">Cancel</button>
+
+</form>
+</div>

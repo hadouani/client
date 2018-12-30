@@ -1,0 +1,50 @@
+<br>
+<h1> Users List</h1>
+<br>
+<table class="table " [mfData]="users" #mf="mfDataTable" [mfRowsOnPage]="20">
+  <thead class="thead-light">
+  <tr>
+    <th >
+      <mfDefaultSorter by="name">Name</mfDefaultSorter>
+    </th>
+    <th>
+      <mfDefaultSorter by="email">Email</mfDefaultSorter>
+    </th>
+    <th >
+    <mfDefaultSorter by="age">Actions</mfDefaultSorter>
+  </th>
+    <th >
+
+    </th>
+    <th >
+
+    </th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of mf.data">
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td class="text-right">
+      <td>
+        <button mdbBtn type="button" color="primary" class="btn btn-outline-secondary" size="sm" rounded="true" routerLink="/posts/{{user.id}}"
+                mdbWavesEffect><i class="fa fa-eye" aria-hidden="true"></i>
+        </button>
+  </td>
+    <td>
+        <button mdbBtn type="button" class="btn btn-outline-danger" size="sm" rounded="true" (click)="delete(user)" mdbWavesEffect>
+          <i class="fas fa-trash-alt"></i>
+        </button>
+
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="4">
+      <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+    </td>
+  </tr>
+  </tfoot>
+</table>

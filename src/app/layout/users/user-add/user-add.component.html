@@ -1,0 +1,57 @@
+<!-- Default form contact -->
+<br>
+<button (click)="change()" type="button" class="btn btn-lg btn-block btn-outline-success">Ajouter Post</button>
+<br>
+<div id="top" class="container" *ngIf="etat">
+<form #form [formGroup]="userForm" (submit)="onSubmit()"
+      class="text-center border border-light p-5">
+
+  <p class="h4 mb-4">Add User</p>
+
+  <br>
+  <div class="form-group">
+  <div class="md-form">
+    <input mdbInput type="text" id="defaultContactFormName" class="form-control " formControlName="name"
+           placeholder="Name">
+    <div class="alert alert-danger"
+      *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)">
+      <mdb-error
+        *ngIf="userForm.controls['name'].errors.required">
+        Name is required.
+      </mdb-error>
+      <mdb-error *ngIf="userForm.controls['name'].errors.minlength">
+        Name must be at least 4 characters long.
+      </mdb-error>
+    </div>
+  </div>
+
+  </div>
+
+  <br>
+  <br>
+  <!-- Email -->
+  <div class="form-group">
+  <div class="md-form">
+    <input mdbInput type="email" id="defaultContactFormEmail" class="form-control" formControlName="email"
+           placeholder="E-mail">
+
+    <div class="alert alert-danger"
+      *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+      <mdb-error
+        *ngIf="userForm.controls['email'].errors.required">
+        Name is required.
+      </mdb-error>
+      <mdb-error *ngIf="userForm.controls['email'].errors.email">
+        Name must be an email
+      </mdb-error>
+    </div> </div>
+
+
+  </div>
+
+  <!-- Send button -->
+  <button [disabled]="userForm.invalid" class="btn  btn-outline-secondary " type="submit">Add</button>
+  <button class="btn  btn-outline-danger" (click)="change()">Cancel</button>
+
+</form>
+</div>

@@ -1,0 +1,22 @@
+<table class="table table-striped" [mfData]="posts" #mf="mfDataTable" [mfRowsOnPage]="20">
+
+  <div class="container" >
+    <br>
+    <h1>Posts List</h1>
+    <br>
+
+
+    <div *ngFor="let post of mf.data" class="alert alert-success" role="alert">
+      <div >
+        <h6 class="alert-heading">{{post.date}}</h6>
+      </div>
+      <hr>
+      <div >
+        <h4 class="alert-heading">{{post.titre}}</h4>
+      </div>
+      <hr>
+      <p class="mb-0">{{post.data}}</p>
+      <button type="button" class="btn   btn-outline-danger " (click)="delete(post)" ><i class="fas fa-trash-alt"></i></button>
+    </div></div>
+
+</table>
